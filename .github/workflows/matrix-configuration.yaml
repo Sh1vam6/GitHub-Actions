@@ -3,20 +3,24 @@ name: matric configuration
 on: push
 
 jobs:
-    ubuntu:
-      runs-on: ubuntu-latest
-      steps:
-      - name: docker info
-        run: docker info
+    ubuntu-windows:
+        strategy:
+            matrix:
+                os: [ubuntu-latest, windows-latest]
+                images: [hello-world, alpine]
+        runs-on: ${{ matrix.os }}
+        steps:
+        - name: docker info
+          run: docker info
       
-      - name: run images
-        run: docker run hello-world
+        - name: run images on ${{ matrix.os }}
+          run: docker run ${{ matrix.images }}
 
-    windows:
-      runs-on: windows-latest
-      steps:
-      - name: docker info
-        run: docker info
+    # windows:
+    #   runs-on: windows-latest
+    #   steps:
+    #   - name: docker info
+    #     run: docker info
       
-      - name: run images
-        run: docker run hello-world
+    #   - name: run images
+    #     run: docker run hello-world
