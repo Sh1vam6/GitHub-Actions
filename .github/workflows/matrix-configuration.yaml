@@ -1,0 +1,22 @@
+name: matric configuration
+
+on: push
+
+jobs:
+    ubuntu:
+      runs-on: ubuntu-latest
+      steps:
+      - name: docker info
+        run: docker info
+      
+      - name: run images
+        run: docker run hello-world
+
+    windows:
+      runs-on: windows-latest
+      steps:
+      - name: docker info
+        run: docker info
+      
+      - name: run images
+        run: docker run hello-world
