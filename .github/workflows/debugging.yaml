@@ -1,0 +1,27 @@
+name: Degbugging the workflow
+
+on: push
+
+env:
+  USER-1: SHIVAM
+  USER-2: GAUTAM
+
+jobs:
+  debug_job:
+    runs-on: ubuntu-latest
+    steps:
+    - name: step 1 , checkout repo
+      uses: actions/checkout@v4
+    
+    - name: step 2, set user-1 as USERNAME
+      run: |
+         echo "USERNAME=$USER-1" >> $GITHUB_ENV
+
+    - name: step 3, printing username
+      run: |
+         echo "Username ==== $USERNAME"
+         exit 1
+    
+    - name: step 4, print user-2
+      run: |
+         echo $USER-2
