@@ -22,6 +22,6 @@ jobs:
          echo "Username ==== $USERNAME"
          exit 1
     
-    - name: step 4, print user-2
+    - name: step 4, print user-2 value
       run: |
          echo $USER-2
